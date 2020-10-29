@@ -1,8 +1,8 @@
 const db = require("./queryHandler");
-db.query("SELECT NOW()", (err, res) => {
+db.query("SELECT * FROM company", (err, res) => {
   if (err) throw err;
   console.log(res);
-  console.log("Connected!");
+  console.log("Success!");
 
   db.end();
 });
