@@ -1,8 +1,6 @@
-CREATE DATABASE
-IF NOT EXISTS job_hound
+CREATE DATABASE job_hound
 
-CREATE TABLE
-IF NOT EXISTS company
+CREATE TABLE company
 (
     name char
 (40) NOT NULL,
@@ -14,7 +12,8 @@ IF NOT EXISTS company
 (name)
 );
 
-ALTER TABLE company ALTER COLUMN size TYPE
+ALTER TABLE company 
+ALTER COLUMN size TYPE
 VARCHAR,
 ALTER COLUMN rating TYPE VARCHAR,
 ALTER COLUMN name TYPE TEXT,
@@ -25,8 +24,7 @@ INSERT INTO company
 VALUES
     ('Google', '98771', '4.6', 'S3_id_here');
 
-CREATE TABLE
-IF NOT EXISTS post
+CREATE TABLE post
 (
     id UUID PRIMARY KEY NOT NULL DEFAULT gen_random_uuid
 (),
@@ -46,7 +44,8 @@ IF NOT EXISTS post
 DELETE CASCADE
 );
 
-ALTER TABLE post ALTER COLUMN industry TYPE
+ALTER TABLE post
+ALTER COLUMN industry TYPE
 TEXT,
 ALTER COLUMN location TYPE TEXT,
 ALTER COLUMN position TYPE TEXT;
