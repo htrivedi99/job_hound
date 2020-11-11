@@ -1,0 +1,147 @@
+.navbar-top{
+    width: 100%;
+    height: 50px;
+    margin-top: 10px;
+    
+ }
+ .new-navlink {
+    list-style: none;
+    font-family: Helvetica;
+    margin: 0;
+    padding: 0;
+    border-radius: 5px;
+ }
+ .new-navlink li{
+    float: right;
+ }
+ .new-navlink li a{
+    display: block;
+    text-decoration: none;
+    padding: 15px 20px;
+    color: #36356b;
+    border-radius: 5px;
+    
+ }
+ .new-navlink li a:hover {
+    /* background-color: #36356b; */
+    background-color: #00416d;
+    color: white;
+ }
+
+ .search-box {
+    border-style: solid;
+    border-width: 2px;
+    border-color: #00416d;
+    position: absolute;
+    height: 40px;
+    top: 1;
+    border-radius: 10px;
+    padding: 0px;
+    margin: 0px 3%;
+    width: 30%;
+}
+ 
+.search-btn {
+    float: left;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+    display: flex;
+    cursor: pointer;
+ 
+}
+
+.navbar-top .search-box .search-txt {
+    border: None;
+    background: None;
+    outline: None;
+    float: left;
+    padding: 0;
+    color: #000;
+    font-size: 20px;
+    transition: 0.4s;
+    line-height: 40px;
+    width: 87%;
+    font-family: Arial, Helvetica, sans-serif;
+ }
+
+ .filters {
+    padding: 0;
+    margin: 0;
+    margin-top: 10px;
+    display: flex;
+    width: 100%;
+ }
+ .filters .categories {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: flex-start;
+    width: 100%;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 500;
+    
+ }
+ 
+ .filters .categories > span {
+    margin: 0;
+    padding: 0;
+    margin-right: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 20px;
+    padding-right: 40px;
+    background-color: #00416d;
+    color: #FFF;
+    border-radius: 10px;
+    cursor: pointer;
+ }
+ .filters .categories .chevron {
+    position: absolute;
+    right: 10px;
+    top: 17px;
+    padding-right: 5px;
+    
+ }
+ 
+ .filterCol {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin-left: 5px;
+    margin-right: 5px;
+ }
+ 
+ .filterBox {
+    background: #2341E0;
+    opacity: 0.5;
+    width: 100%;
+    height: 80%;
+    border-radius: 30px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+ }
+ 
+ .filterText {
+    color: #fff;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    text-align: center;
+    font-size: 14px;
+    padding-top: 5px;
+    font-family: Rubik;
+ 
+ }
+ .filterText:after {
+   content: url("/triangle.svg");
+   padding-left: 10px;
+ }
+ 
