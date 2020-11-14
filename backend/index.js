@@ -72,7 +72,18 @@ app.get("/", (request, response) => {
 });
 
 app.get("/getAllJobs", postgresdb.getJobPosts);
-app.post("/addJob", postgresdb.addNewJobPost);
+
+app.post("/addJob", (req, res) => {
+  console.log(req.body);
+  postgresdb.addNewJobPost(req.body);
+  res.status(200).json({ message: "Sucess" });
+});
+
+app.post("/removeJob", (req, res) => {
+  console.log(req.body);
+  postgresdb.removeJobPost(req.body);
+  res.status(200).json({ message: "Sucess" });
+});
 
 app.listen(port, () => {
   console.log(`App running on port ${port}.`);

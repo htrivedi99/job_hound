@@ -1,17 +1,19 @@
 const db = require("./postgres");
 
 const getJobPosts = (request, response) => {
-  pool.query("SELECT * FROM post", (error, results) => {
+  db.query("SELECT * FROM post", (error, results) => {
     if (error) {
-      throw error;
+      response.status(400).json({ message: error });
+    } else {
+      response.status(200).json(results.rows);
     }
-    response.status(200).json(results.rows);
   });
+  db.end;
 };
 
 const addNewJobPost = (request, response) => {
-  pool.query(
-    "INSERT INTO job_postings(requirements,industry,location,position,description,company_name) VALUES ($1, $2, $3, $4, $5, $6)",
+  db.query(
+    "INSERT INTO post(requirements,industry,location,position,description,company_name,experience_level,education_level) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)",
     [
       request["requirements"],
       request["industry"],
@@ -19,13 +21,32 @@ const addNewJobPost = (request, response) => {
       request["position"],
       request["description"],
       request["company_name"],
+      request["experience_level"],
+      request["education_level"],
     ],
     (error, result) => {
       if (error) {
-        throw error;
+        response.status(500).json({ message: error });
+      } else {
+        console.log(result);
+        response.status(201).json({ message: "Job added to DB" });
       }
-      console.log(result);
-      response.status(201).send("Job added to DB");
+    }
+  );
+  db.end;
+};
+
+const removeJobPost = (request, response) => {
+  db.query(
+    "DELETE FROM post WHERE id = $1",
+    [request["id"]],
+    (error, result) => {
+      if (error) {
+        response.status(500).json({ message: error });
+      } else {
+        console.log(result);
+        response.status(200).json({ message: "Job removed from DB" });
+      }
     }
   );
 };
@@ -33,4 +54,5 @@ const addNewJobPost = (request, response) => {
 module.exports = {
   getJobPosts,
   addNewJobPost,
+  removeJobPost,
 };
