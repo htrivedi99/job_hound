@@ -92,6 +92,34 @@ app.post("/addNewCompany", (req, res) => {
   res.status(200).json({ message: "Sucess" });
 });
 
+app.get("/getCompanyByName", (req, res) => {
+  console.log(req.body);
+  postgresdb.getCompanyByName(req.body);
+  res.status(200).json({ message: "Sucess" });
+});
+
+app.get("/getCompanyRatingRange", (req, res) => {
+  console.log(req.body);
+  postgresdb.getCompanyRatingRange(req.body);
+  res.status(200).json({ message: "Sucess" });
+});
+
+app.get("/getCompanyRatingRange", (req, res) => {
+  console.log(req.body);
+  postgresdb.getCompanyRatingRange(req.body);
+  res.status(200).json({ message: "Sucess" });
+});
+
+app.get("/updateComapnyRating", (req, res) => {
+  console.log(req.body);
+  postgresdb.updateCompanyRatings(req.body);
+  res.status(200).json({ message: "Sucess" });
+});
+
+
+
+
+
 app.listen(port, () => {
   console.log(`App running on port ${port}.`);
 });
