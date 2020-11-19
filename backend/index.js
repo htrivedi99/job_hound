@@ -71,18 +71,42 @@ app.get("/", (request, response) => {
   response.json({ info: "Node.js, Express, and Postgres API" });
 });
 
-app.get("/getAllJobs", postgresdb.getJobPosts);
+app.get("/getAllJobs", (req, res) => {
+  postgresdb.getJobPosts(
+    (cb = (err, data) => {
+      if (err) {
+        res.status(400).json({ message: "Bad Request" });
+      } else {
+        res.status(200).json({ data: data });
+      }
+    })
+  );
+});
 
 app.post("/addJob", (req, res) => {
-  console.log(req.body);
-  postgresdb.addNewJobPost(req.body);
-  res.status(200).json({ message: "Sucess" });
+  postgresdb.addNewJobPost(
+    req.body,
+    (cb = (err, response) => {
+      if (err) {
+        res.status(500).json({ error: err });
+      } else {
+        res.status(201).json([{ message: "Success" }, { result: response }]);
+      }
+    })
+  );
 });
 
 app.post("/removeJob", (req, res) => {
-  console.log(req.body);
-  postgresdb.removeJobPost(req.body);
-  res.status(200).json({ message: "Sucess" });
+  postgresdb.removeJobPost(
+    req.body,
+    (cb = (err, response) => {
+      if (err) {
+        res.status(500).json({ error: err });
+      } else {
+        res.status(200).json([{ message: "Success" }, { result: response }]);
+      }
+    })
+  );
 });
 
 app.listen(port, () => {
