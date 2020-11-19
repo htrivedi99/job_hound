@@ -84,6 +84,13 @@ app.post("/removeJob", (req, res) => {
   postgresdb.removeJobPost(req.body);
   res.status(200).json({ message: "Sucess" });
 });
+app.get("/getAllCompanies", postgresdb.getAllCompanies);
+
+app.post("/addNewCompany", (req, res) => {
+  console.log(req.body);
+  postgresdb.getAllCompanies(req.body);
+  res.status(200).json({ message: "Sucess" });
+});
 
 app.listen(port, () => {
   console.log(`App running on port ${port}.`);
