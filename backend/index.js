@@ -3,6 +3,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const MongoClient = require("mongodb").MongoClient;
 const postgresdb = require("./sql");
+const postgres = require("./postgres");
 const app = express();
 const port = 3001;
 
@@ -75,7 +76,7 @@ app.get("/getAllJobs", (req, res) => {
   postgresdb.getJobPosts(
     (cb = (err, data) => {
       if (err) {
-        res.status(400).json({ message: "Bad Request" });
+        res.status(400).json({ error: err });
       } else {
         res.status(200).json({ data: data });
       }
@@ -104,6 +105,32 @@ app.post("/removeJob", (req, res) => {
         res.status(500).json({ error: err });
       } else {
         res.status(200).json([{ message: "Success" }, { result: response }]);
+      }
+    })
+  );
+});
+
+app.post("/updateJob", (req, res) => {
+  postgresdb.updateJobPost(
+    req.body,
+    (cb = (err, response) => {
+      if (err) {
+        res.status(500).json({ error: err });
+      } else {
+        res.status(200).json([{ message: "Success" }, { result: response }]);
+      }
+    })
+  );
+});
+
+app.post("/filterJobPosts", (req, res) => {
+  postgresdb.filterJobPosts(
+    req.body,
+    (cb = (err, data) => {
+      if (err) {
+        res.status(400).json({ error: err });
+      } else {
+        res.status(200).json([{ message: "Success" }, { data: data }]);
       }
     })
   );

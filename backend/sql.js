@@ -54,8 +54,40 @@ const removeJobPost = (post, cb) => {
   });
 };
 
+const updateJobPost = (post, cb) => {
+  const query = {
+    text: "UPDATE post SET " + post["field"] + " = $1 WHERE id = $2",
+    values: [post["value"], post["id"]],
+  };
+  db.query(query, (err, res) => {
+    if (err) {
+      console.log(err.stack);
+      cb(err.stack, null);
+    } else {
+      cb(null, res);
+    }
+  });
+};
+
+const filterJobPosts = (params, cb) => {
+  const query = {
+    text: "SELECT * FROM post WHERE " + params["field"] + " ILIKE $1",
+    values: ["%" + params["value"] + "%"],
+  };
+  db.query(query, (err, res) => {
+    if (err) {
+      console.log(err.stack);
+      cb(err.stack, null);
+    } else {
+      cb(null, res.rows);
+    }
+  });
+};
+
 module.exports = {
   getJobPosts,
   addNewJobPost,
   removeJobPost,
+  updateJobPost,
+  filterJobPosts,
 };
