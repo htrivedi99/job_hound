@@ -1,0 +1,499 @@
+1	Walmart	2,200,000
+2	Amazon.com	798,000
+3	Exxon Mobil	74,900
+4	Apple	137,000
+5	CVS Health	290,000
+6	Berkshire Hathaway	391,500
+7	UnitedHealth Group	325,000
+8	McKesson	70,000
+9	AT&T	247,800
+10	AmerisourceBergen	21,500
+11	Alphabet	118,899
+12	Ford Motor	190,000
+13	Cigna	73,700
+14	Costco Wholesale	201,500
+15	Chevron	48,200
+16	Cardinal Health	49,500
+17	JPMorgan Chase	256,981
+18	General Motors	164,000
+19	Walgreens Boots Alliance	287,000
+20	Verizon Communications	135,000
+22	Marathon Petroleum	60,910
+23	Kroger	435,000
+24	Fannie Mae	7,500
+25	Bank of America	208,131
+26	Home Depot	415,700
+27	Phillips 66	14,500
+28	Comcast	190,000
+29	Anthem	70,600
+30	Wells Fargo	259,800
+31	Citigroup	200,000
+32	Valero Energy	10,222
+33	General Electric	205,000
+34	Dell Technologies	165,000
+35	Johnson & Johnson	132,200
+36	State Farm Insurance	57,672
+37	Target	368,000
+38	International Business Machines	383,800
+39	Raytheon Technologies	243,200
+40	Boeing	161,100
+41	Freddie Mac	6,892
+42	Centene	56,600
+43	UPS	377,640
+44	Lowe's	260,000
+45	Intel	110,800
+46	Facebook	44,942
+47	FedEx	389,500
+48	MetLife	49,000
+49	Walt Disney	223,000
+50	Procter & Gamble	97,000
+51	PepsiCo	267,000
+52	Humana	46,000
+53	Prudential Financial	51,511
+54	Archer Daniels Midland	38,100
+55	Albertsons	267,000
+56	Sysco	69,000
+57	Lockheed Martin	110,000
+58	HP	56,000
+59	Energy Transfer	12,812
+60	Goldman Sachs Group	38,300
+61	Morgan Stanley	60,431
+62	Caterpillar	102,300
+63	Cisco Systems	75,900
+64	Pfizer	88,300
+65	HCA Healthcare	245,000
+66	American International Group	46,000
+67	American Express	64,500
+68	Delta Air Lines	91,224
+69	Merck	71,000
+70	American Airlines Group	133,700
+71	Charter Communications	95,100
+72	Allstate	46,035
+73	New York Life Insurance	11,519
+74	Nationwide	28,114
+75	Best Buy	125,000
+76	United Airlines Holdings	96,000
+77	Liberty Mutual Insurance Group	45,000
+78	Dow	36,500
+79	Tyson Foods	141,000
+80	TJX	286,000
+81	TIAA	16,533
+82	Oracle	136,000
+83	General Dynamics	102,900
+84	Deere	73,489
+85	Nike	76,700
+86	Progressive	41,571
+87	Publix Super Markets	207,000
+88	Coca-Cola	86,200
+89	Massachusetts Mutual Life Insurance	9,896
+90	Tech Data	15,000
+91	World Fuel Services	5,500
+92	Honeywell International	113,000
+93	ConocoPhillips	10,400
+94	USAA	35,076
+95	Exelon	32,713
+96	Northrop Grumman	90,000
+97	Capital One Financial	51,900
+98	Plains GP Holdings	5,000
+99	AbbVie	30,000
+100	StoneX Group	2,012
+101	Enterprise Products Partners	7,300
+102	Northwestern Mutual	5,964
+103	3M	96,163
+104	Abbott Laboratories	107,000
+105	CHS	10,703
+106	Travelers	30,800
+107	Philip Morris International	73,500
+108	Raytheon	70,000
+109	Hewlett Packard Enterprise	61,600
+110	Arrow Electronics	19,300
+111	ViacomCBS	26,280
+112	Dollar General	143,000
+113	U.S. Bancorp	69,651
+114	Starbucks	346,000
+115	Bristol-Myers Squibb	30,000
+116	US Foods Holding	28,000
+117	Mondelez International	80,000
+118	Paccar	27,000
+119	Thermo Fisher Scientific	75,000
+120	Macy's	123,000
+121	Jabil	200,000
+122	Kraft Heinz	37,000
+123	Duke Energy	28,793
+124	Tesla	48,016
+125	PBF Energy	3,442
+126	Qualcomm	37,000
+127	NGL Energy Partners	1,300
+128	CBRE Group	100,000
+129	Baker Hughes	68,000
+130	Synnex	240,900
+131	Dollar Tree	125,000
+132	Cummins	61,615
+133	United Natural Foods	19,000
+134	Micron Technology	37,000
+135	Amgen	23,400
+136	Penske Automotive Group	26,980
+137	Visa	19,500
+138	Broadcom	19,000
+139	Nucor	26,800
+140	Gilead Sciences	11,800
+141	Southwest Airlines	60,767
+142	Halliburton	55,000
+143	Lumen Technologies	42,500
+144	International Paper	51,000
+145	Eli Lilly	33,625
+146	Aflac	11,729
+147	Lennar	10,106
+148	Occidental Petroleum	14,400
+149	Union Pacific	37,483
+150	Rite Aid	42,645
+151	PNC Financial Services Group	50,968
+152	DuPont	35,000
+153	Southern	27,943
+154	AutoNation	25,000
+155	DXC Technology	130,000
+156	McDonald's	205,000
+157	Marriott International	174,000
+158	ManpowerGroup	28,000
+159	Bank of New York Mellon	48,400
+160	Hartford Financial Services Group	19,500
+161	Danaher	60,000
+162	Whirlpool	77,000
+163	AECOM	86,000
+164	Netflix	8,600
+165	Kohl's	79,500
+166	Lear	164,100
+167	Altria Group	7,300
+168	Performance Food Group	18,000
+169	Avnet	15,500
+170	Synchrony Financial	16,500
+171	Genuine Parts	55,000
+172	NextEra Energy	14,800
+173	CarMax	25,946
+174	Tenet Healthcare	101,104
+175	Kimberly-Clark	40,000
+176	Emerson Electric	88,000
+177	WestRock	51,100
+178	CDW	9,900
+179	Jones Lang LaSalle	93,400
+180	Sherwin-Williams	61,111
+181	Fluor	53,349
+182	PayPal Holdings	23,200
+183	D.R. Horton	8,916
+184	HollyFrontier	4,074
+185	Tenneco	78,000
+186	EOG Resources	2,900
+187	BD	70,093
+188	Lincoln National	11,357
+189	PG&E	23,000
+190	Salesforce	49,000
+191	Mastercard	18,600
+192	General Mills	40,000
+193	Molina Healthcare	10,000
+194	Cognizant Technology Solutions	292,500
+195	Marsh & McLennan	76,000
+196	XPO Logistics	100,000
+197	Dominion Energy	19,100
+198	Western Digital	61,800
+199	Gap	129,000
+200	Aramark	233,400
+201	Principal Financial	17,601
+202	Ross Stores	92,500
+203	Colgate-Palmolive	34,300
+204	American Electric Power	17,408
+205	Nordstrom	75,000
+206	Jacobs Engineering Group	50,000
+207	Waste Management	44,900
+208	C.H. Robinson Worldwide	15,427
+209	PPG Industries	47,600
+210	Booking Holdings	26,400
+211	Omnicom Group	70,000
+212	Loews	18,605
+213	Ecolab	50,200
+214	Stryker	40,000
+215	Estée Lauder	48,000
+216	Goodyear Tire & Rubber	63,000
+217	Truist Financial	59,000
+218	Applied Materials	22,000
+219	BlackRock	16,200
+220	Stanley Black & Decker	59,438
+221	Freeport-McMoRan	27,500
+222	Texas Instruments	29,768
+223	Biogen	7,400
+224	Parker-Hannifin	55,610
+225	Reinsurance Group of America	3,188
+226	Howmet Aerospace	41,700
+227	Automatic Data Processing	58,000
+228	Uber Technologies	26,900
+229	Illinois Tool Works	45,000
+230	DaVita	65,000
+231	Discover Financial Services	17,200
+232	Land O'Lakes	8,000
+233	VF	75,000
+234	Corteva	21,000
+235	Las Vegas Sands	50,000
+236	Textron	35,000
+237	Kellogg	31,000
+238	Guardian Life Ins. Co. of America	9,032
+239	Qurate Retail	25,314
+240	Core-Mark Holding	8,555
+241	Community Health Systems	71,500
+242	Kinder Morgan	11,086
+243	BJ's Wholesale Club	27,231
+244	State Street	39,103
+245	Ameriprise Financial	12,500
+246	Global Partners	3,860
+247	United States Steel	27,500
+248	L Brands	59,950
+249	MGM Resorts International	72,000
+250	L3Harris Technologies	50,000
+251	DISH Network	16,000
+252	Lithia Motors	14,320
+253	DTE Energy	10,700
+254	American Family Insurance Group	13,531
+255	Farmers Insurance Exchange	10,980
+256	Consolidated Edison	14,890
+257	LKQ	51,000
+258	Sempra Energy	13,969
+259	Edison International	12,937
+260	CenterPoint Energy	14,262
+261	Quanta Services	40,300
+262	Murphy USA	7,250
+263	Expedia Group	25,400
+264	Group 1 Automotive	15,296
+265	Bed Bath & Beyond	62,000
+266	Unum Group	10,300
+267	CSX	20,908
+268	AutoZone	75,840
+269	Pacific Life	3,815
+270	Vistra Energy	5,475
+271	Charles Schwab	19,700
+272	Crown Holdings	33,043
+273	Ally Financial	8,700
+274	Laboratory Corp. of America	65,000
+275	Live Nation Entertainment	18,200
+276	Xcel Energy	11,295
+277	Corning	49,500
+278	W.W. Grainger	24,550
+279	Ball	18,300
+280	Fox	7,700
+281	Universal Health Services	79,050
+282	Baxter International	50,000
+283	Norfolk Southern	24,587
+284	Navistar International	12,300
+285	Adobe	22,634
+286	J.C. Penney	90,000
+287	Discovery	9,200
+288	Keurig Dr Pepper	25,500
+289	Leidos Holdings	34,000
+290	IQVIA Holdings	67,000
+291	Reliance Steel & Aluminum	15,300
+292	Nvidia	13,775
+293	Entergy	13,635
+294	FirstEnergy	12,316
+295	eBay	13,300
+296	Boston Scientific	36,000
+297	ODP	40,000
+298	Molson Coors Beverage	17,700
+299	Steel Dynamics	8,385
+300	Mutual of Omaha Insurance	6,072
+301	Sonic Automotive	9,300
+302	Alcoa	13,800
+303	Fidelity National Information Services	55,000
+304	Henry Schein	19,000
+305	Republic Services	36,000
+306	Liberty Media	6,753
+307	Peter Kiewit Sons'	23,000
+308	Interpublic Group	54,300
+309	PulteGroup	5,245
+310	AES	8,000
+311	Fiserv	44,000
+312	BorgWarner	29,000
+313	Oneok	2,882
+314	O'Reilly Automotive	67,663
+315	Assurant	13,900
+316	Newell Brands	30,000
+317	Public Service Enterprise Group	12,992
+318	News Corp.	28,000
+319	Calpine	2,256
+320	Auto-Owners Insurance	6,141
+321	Mohawk Industries	41,800
+322	PVH	30,750
+322	Campbell Soup	19,000
+324	NRG Energy	4,577
+325	Fifth Third Bancorp	19,869
+326	Hertz Global Holdings	38,000
+327	Altice USA	10,700
+328	Newmont	16,600
+329	Cheniere Energy	1,530
+330	Advance Auto Parts	53,000
+331	Lam Research	10,700
+332	Owens & Minor	15,400
+333	Equitable Holdings	10,100
+334	Conagra Brands	18,000
+335	Markel	18,600
+336	Edward Jones (Jones Financial Companies)	49,000
+337	Hormel Foods	18,800
+338	Hilton Worldwide Holdings	173,000
+339	Univar Solutions	10,300
+340	United Rentals	19,100
+341	Pioneer Natural Resources	2,323
+342	Delek US Holdings	3,707
+343	Eastman Chemical	14,500
+344	EMCOR Group	36,000
+345	Avis Budget Group	25,600
+346	J.B. Hunt Transport Services	29,056
+347	Xerox Holdings	27,000
+348	Wayfair	16,985
+349	KKR	1,384
+350	AGCO	20,961
+351	Alleghany	10,786
+352	Icahn Enterprises	28,033
+353	Voya Financial	6,000
+354	Ryder System	39,900
+355	Air Products & Chemicals	17,570
+356	Mosaic	12,600
+357	Huntington Ingalls Industries	42,000
+358	Berry Global Group	48,000
+359	Anixter International	9,400
+360	Alaska Air Group	24,134
+361	Yum China Holdings	450,000
+362	Dick's Sporting Goods	28,450
+363	Caesars Holdings	64,000
+364	Genworth Financial	3,100
+365	Targa Resources	2,680
+366	Coty	19,000
+367	Dana	36,300
+368	Thrivent Financial for Lutherans	3,235
+369	Autoliv	61,957
+370	SpartanNash	13,800
+371	Eversource Energy	8,234
+372	Darden Restaurants	184,514
+373	Chesapeake Energy	2,300
+374	National Oilwell Varco	34,645
+375	Fidelity National Financial	23,484
+376	Erie Insurance Group	5,778
+377	Oshkosh	15,400
+378	Casey's General Stores	26,866
+379	WESCO International	9,500
+380	Tractor Supply	24,000
+381	CommScope Holding	30,000
+382	Huntsman	10,000
+383	American Financial Group	7,700
+384	Masco	22,000
+385	Sanmina	38,500
+386	Amphenol	74,000
+387	Williams	4,812
+388	Westinghouse Air Brake	27,500
+389	Expeditors Intl. of Washington	18,000
+390	Andersons	2,284
+391	Westlake Chemical	9,430
+392	Constellation Brands	9,800
+393	Frontier Communications	18,317
+394	JetBlue Airways	19,032
+395	Citizens Financial Group	17,997
+396	Raymond James Financial	14,200
+397	Foot Locker	33,294
+398	Hershey	15,330
+399	Zimmer Biomet Holdings	19,900
+400	Cincinnati Financial	5,200
+401	Western & Southern Financial Group	2,787
+402	W.R. Berkley	7,493
+403	Motorola Solutions	17,000
+404	Thor Industries	21,750
+405	Regeneron Pharmaceuticals	8,100
+406	Spirit AeroSystems Holdings	18,200
+407	J.M. Smucker	7,400
+408	PPL	12,280
+409	Insight Enterprises	11,261
+410	Quest Diagnostics	47,000
+411	KeyCorp	17,045
+412	Veritiv	8,000
+413	DCP Midstream	2,250
+414	American Tower	5,454
+415	Graybar Electric	9,000
+416	WEC Energy Group	7,509
+417	NVR	5,700
+418	Ulta Beauty	31,000
+419	Devon Energy	1,800
+420	Blackstone Group	2,905
+421	Dean Foods	14,500
+422	Fortive	25,000
+423	UGI	12,800
+424	Burlington Stores	47,000
+425	Builders FirstSource	15,800
+426	Toll Brothers	5,100
+427	Old Republic International	9,000
+428	Asbury Automotive Group	8,500
+429	Arthur J. Gallagher	33,247
+430	MasTec	21,000
+431	Owens Corning	19,000
+432	Magellan Health	10,100
+433	Dover	24,000
+434	Beacon Roofing Supply	8,147
+435	Avery Dennison	30,000
+436	Hanesbrands	63,000
+437	Packaging Corp. of America	15,500
+438	M&T Bank	17,386
+439	NCR	36,000
+440	Northern Trust	19,800
+441	Cintas	45,000
+442	Polaris	14,000
+443	CMS Energy	8,459
+444	Seaboard	13,100
+445	Intuit	9,400
+446	Regions Financial	19,564
+447	FM Global	5,591
+448	AMD	11,400
+449	Ovintiv	2,571
+450	Booz Allen Hamilton Holding	26,100
+451	S&P Global	22,500
+452	Rockwell Automation	23,000
+453	O-I Glass	27,500
+454	Wynn Resorts	30,200
+455	Securian Financial Group	6,400
+456	Alliance Data Systems	8,500
+457	Weyerhaeuser	9,400
+457	Brighthouse Financial	1,330
+459	Intercontinental Exchange	5,989
+460	American Axle & Manufacturing	20,000
+461	Hess	1,775
+462	ABM Industries	140,000
+463	Activision Blizzard	9,200
+464	GameStop	30,000
+465	Apache	3,163
+466	Science Applications International	24,311
+467	AK Steel Holding	9,300
+468	Dillard's	30,400
+469	Ralph Lauren	18,650
+470	Celanese	7,714
+471	R.R. Donnelley & Sons	36,400
+472	Zoetis	10,600
+473	Ascena Retail Group	33,000
+474	Clorox	8,800
+475	Ingredion	11,000
+476	First American Financial	18,412
+477	Graphic Packaging Holding	18,000
+478	NetApp	10,500
+478	HD Supply Holdings	11,500
+480	TravelCenters of America	18,594
+481	Olin	6,500
+482	Robert Half International	16,000
+483	EnLink Midstream	1,355
+484	Avantor	12,000
+485	Tapestry	17,400
+486	TD Ameritrade Holding	9,226
+487	Analog Devices	16,400
+488	Ameren	9,323
+489	Williams-Sonoma	19,300
+490	Realogy Holdings	10,150
+491	Commercial Metals	11,524
+492	Rush Enterprises	7,244
+493	Franklin Resources	9,597
+494	Fortune Brands Home & Security	24,700
+495	Levi Strauss	15,800
+496	Crown Castle International	5,100
+497	Simon Property Group	3,750
+498	Cerner	27,400
+499	Post Holdings	10,100
+500	Huntington Bancshares	15,664
