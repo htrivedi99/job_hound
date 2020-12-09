@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const MongoClient = require("mongodb").MongoClient;
 const postgresdb = require("./sql");
 const express = require("express");
+const postgres = require("./postgres");
 const app = express();
 const port = 3001;
 const AWS = require('aws-sdk');
@@ -10,7 +11,6 @@ const fs = require('fs');
 const multer = require('multer');
 const ObjectID = require('mongodb').ObjectID; 
 const { v4: uuidv4 } = require('uuid');
-const { response } = require("express");
 const ID = process.env.AWS_ID;
 const SECRET = process.env.AWS_SECRET;
 
@@ -343,14 +343,6 @@ app.post("/filterJobPosts", (req, res) => {
     })
   );
 });
-
-
-// app.post("/addNewJobPostSQL", postgresdb.addNewJobPostSQL);
-
-
-app.get('/', (request, response) => {
-    response.json({ info: 'Node.js, Express, and Postgres API' })
-})
 
 
 app.listen(port, () => {
