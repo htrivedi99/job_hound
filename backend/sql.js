@@ -1,5 +1,6 @@
 const db = require("./postgres");
 
+
 const getJobPosts = (cb) => {
   const query = {
     text: "SELECT * FROM post",
@@ -14,19 +15,29 @@ const getJobPosts = (cb) => {
   });
 };
 
+const createJobPostTable = (request, response) => {
+  db.query("CREATE TABLE post(job_id TEXT PRIMARY KEY, company_name TEXT, position TEXT, location TEXT, description TEXT, industry TEXT, job_type TEXT, education_level TEXT, experience_level TEXT)", (error, results) => {
+    if(error){
+      throw error;
+    }
+    response.status(200).json("Job posts table created");
+  })
+}
+
 const addNewJobPost = (post, cb) => {
   const query = {
     text:
-      "INSERT INTO post(requirements,industry,location,position,description,company_name,experience_level,education_level) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)",
+      "INSERT INTO post(job_id,job_type,industry,location,position,description,company_name,experience_level,education_level) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)",
     values: [
-      post["requirements"],
-      post["industry"],
-      post["location"],
-      post["position"],
-      post["description"],
-      post["company_name"],
-      post["experience_level"],
-      post["education_level"],
+      post["jobPostId"],
+      post["jobType"],
+      "tech", 
+      post["jobLocation"], 
+      post["jobTitle"], 
+      post["jobDescription"],
+      "Company X", 
+      post["jobLevel"],
+      post["educationLevel"],
     ],
   };
   db.query(query, (err, res) => {
@@ -41,8 +52,8 @@ const addNewJobPost = (post, cb) => {
 
 const removeJobPost = (post, cb) => {
   const query = {
-    text: "DELETE FROM post WHERE id = $1",
-    values: [post["id"]],
+    text: "DELETE FROM post WHERE job_id = $1",
+    values: [post["job_id"]],
   };
   db.query(query, (err, res) => {
     if (err) {
@@ -84,10 +95,14 @@ const filterJobPosts = (params, cb) => {
   });
 };
 
+
+
+
 module.exports = {
   getJobPosts,
   addNewJobPost,
+  createJobPostTable,
   removeJobPost,
   updateJobPost,
-  filterJobPosts,
+  filterJobPosts
 };
