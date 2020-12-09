@@ -13,7 +13,12 @@ function Home(){
             <br/>
             <br/>
             <div onClick={() => history.push("/register")} style={{width: "30%", height: "10vh", backgroundColor: "#4682B4", textAlign: "center", display: "flex", justifyContent: "center", alignItems: "center", borderRadius: "10px", margin: "auto", cursor: "pointer"}}>
-                <h1 style={{color:"#fff"}}>Signup</h1>
+                <h1 style={{color:"#fff"}}>Sign Up as an Applicant</h1>
+            </div>
+            <br />
+            <br />
+            <div onClick={() => history.push("/companyRegister")} style={{width: "30%", height: "10vh", backgroundColor: "#B22222", textAlign: "center", display: "flex", justifyContent: "center", alignItems: "center", borderRadius: "10px", margin: "auto", cursor: "pointer"}}>
+                <h1 style={{color:"#fff"}}>Sign Up as a Company</h1>
             </div>
         </div>
     );

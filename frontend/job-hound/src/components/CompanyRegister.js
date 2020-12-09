@@ -6,7 +6,7 @@ import { useHistory } from 'react-router-dom';
 import axios from "axios";
 
 
-function Register() {
+function CompanyRegister() {
 
     const history = useHistory();
     const [userId, setUserId] = useLocalStorage("userId");
@@ -18,27 +18,32 @@ function Register() {
             lastName: inputs.lastName,
             email: inputs.email,
             password: inputs.password,
-            userType: "applicant"
+            orgName: inputs.orgName,
+            userType: "recruiter"
         }
-        
-        axios.post("/newJobApplicant", newUser)
+
+        axios.post("/newRecruiterUser", newUser)
         .then(res => {
             if(res.status === 200){
                 let docId = res.data.documentId;
                 setUserId(docId);
-                history.push("/applicantDashboard");
+                history.push("/recruiterDashboard");
             }
         })
        }
     }
 
-    const {inputs, handleInputChange, handleSubmit} = CustomForm({firstName: '', lastName: '', email: '', password: '', confirmPassword: ''}, createAccount);
+    const {inputs, handleInputChange, handleSubmit} = CustomForm({firstName: '', lastName: '', email: '', password: '', confirmPassword: '', orgName: ''}, createAccount);
 
     return(
         <div id="register-container">
-        <div class="form-wrap">
-        <h1>Sign Up</h1>
+        <div className="form-wrap">
+        <h1>Sign Up for your Organization</h1>
         <form onSubmit={handleSubmit}>
+        <div className="form-group">
+            <label htmlFor="org-name">Organization Name</label>
+            <input type="text" name="orgName" id="org-name" value={inputs.orgName} onChange={handleInputChange} />
+          </div>
           <div className="form-group">
             <label htmlFor="first-name">First Name</label>
             <input type="text" name="firstName" id="first-name" value={inputs.firstName} onChange={handleInputChange} />
@@ -71,4 +76,4 @@ function Register() {
     );
 }
 
-export default Register;
+export default CompanyRegister;

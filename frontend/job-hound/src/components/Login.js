@@ -13,21 +13,38 @@ function Login() {
     const [userId, setUserId] = useLocalStorage("userId");
     const [firstName, setFirstName] = useLocalStorage("firstName");
     const [lastName, setLastName] = useLocalStorage("lastName");
+    const [jobPosts, setJobPosts] = useLocalStorage("jobPosts");
 
-    const login = () => {
+    const login = async() => {
         const user = {
             email: inputs.email,
             password: inputs.password
         }
-        axios.post("/applicantLogin", user)
-        .then(res => {
-            setUserId(res.data.userId);
-            setFirstName(res.data.firstName);
-            setLastName(res.data.lastName);
-        })
-        .then(res => {
-            history.push("/applicantDashboard");
-        })
+
+        const response = await axios.post("/applicantLogin", user)
+        setUserId(response.data.userId);
+        setFirstName(response.data.firstName);
+        setLastName(response.data.lastName);
+        
+        if(response.data.userType === "applicant"){
+          history.push("/applicantDashboard");
+        }else{
+          setJobPosts(response.data.jobPosts);
+          history.push("/recruiterDashboard");
+        }
+
+
+        // axios.post("/applicantLogin", user)
+        // .then(res => {
+        //   console.log(res);
+        //     setUserId(res.data.userId);
+        //     setFirstName(res.data.firstName);
+        //     setLastName(res.data.lastName);
+        // })
+        // .then(res => {
+        //     //console.log(res);
+        //     // history.push("/applicantDashboard");
+        // })
 
         console.log(userId, firstName, lastName);
 
@@ -36,7 +53,7 @@ function Login() {
     const {inputs, handleInputChange, handleSubmit} = CustomForm({email: '', password: ''}, login);
     return(
         <div id="register-container">
-        <div class="form-wrap">
+        <div className="form-wrap">
         <h1>Login</h1>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
