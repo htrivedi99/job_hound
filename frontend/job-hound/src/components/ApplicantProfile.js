@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, forwardRef, useImperativeHandle } from "react";
 import CustomForm from "./profileForm.js";
 import {useLocalStorage} from "./localStorage.js";
+import { useHistory } from 'react-router-dom';
 import "../styles/ApplicantProfile.css";
 import axios from "axios";
 
@@ -49,7 +50,8 @@ function WorkHistory({ callback, workExperienceList}) {
         setJobExperience("");  
     }
 
-    const saveWorkExperience = () => {
+    const saveWorkExperience = (event) => {
+        event.preventDefault();
         callback(experienceList);
     }
 
@@ -176,6 +178,7 @@ function ApplicantProfile(){
     const [userId, setUserId] = useLocalStorage("userId");
     const [profileData, setProfileData] = useState({firstName: '', lastName: '', email: '', profile: {}, workExperience: []});
     const [workExperience, setWorkExperience] = useState([]);
+    const history = useHistory();
     
 
     const getUserData = async() => {
@@ -189,6 +192,7 @@ function ApplicantProfile(){
         const fetchData = async() => {
             const result = await axios.post("/getUserByID", {"userId":userId});
             setProfileData(result.data);
+            setWorkExperience(result.data.workExperience);
         };
         fetchData();
 
@@ -201,29 +205,45 @@ function ApplicantProfile(){
         if(event){
             event.preventDefault();
         }
+        console.log("Profile clicked");
         const formData = new FormData();
         formData.append("file", resume);
         let resumeUrl = "";
         console.log(profileData.profile);
         console.log(workExperience);
-
-        // await axios.post("/uploadResumeToS3", formData)
-        // .then(res => {
-        //     resumeUrl = res.data;
-        // })
-
         
-        const profileInfo = {
-            userInfo: profileData.profile,
-            workExperience: workExperience,
-            userId: userId,
-            resumeUrl: resumeUrl
+
+        if(resume !== ""){
+            await axios.post("/uploadResumeToS3", formData)
+            .then(res => {
+                console.log(res);
+                resumeUrl = res.data;
+            })
+        }
+        let profileInfo = {};
+        if(resume !== ""){
+            profileInfo = {
+                userInfo: profileData.profile,
+                workExperience: workExperience,
+                userId: userId,
+                resumeUrl: resumeUrl
+            }
+        }else{
+            profileInfo = {
+                userInfo: profileData.profile,
+                workExperience: workExperience,
+                userId: userId
+            }
+
         }
         
         await axios.post("/updateApplicantProfile", profileInfo)
         .then(res => {
             console.log(res);
-        })
+            history.push("/applicantDashboard");
+            
+        }) 
+
     }
 
     // const {inputs, handleInputChange, handleSubmit} = CustomForm({firstName: profileData.firstName, lastName: '', email: '', linkedin: '', collegeName: '', major: '', degree: ''}, saveProfile);
@@ -252,17 +272,8 @@ function ApplicantProfile(){
 
     return(
         <div style={{display: "flex", flex: 1, justifyContent: "center"}}>
-            {/* <div className="profile-list-container">
-                <ul className="profile-list">
-                    <li className="profile-list-element">Personal Info</li>
-                    <li className="profile-list-element">Location</li>
-                    <li className="profile-list-element">Role</li>
-                    <li className="profile-list-element">Experience</li>
-                    <li className="profile-list-element">Skills</li>
-                </ul>
-            </div> */}
             <div className="container">
-                <form onSubmit={saveProfile}>
+                <form>
                 <h1>Profile Info</h1>
                 <hr/>
                 <div style={{display:"flex", width:"100%"}}>
@@ -309,9 +320,10 @@ function ApplicantProfile(){
                 </div>
                 <br/>
                 <WorkHistory callback={getWorkExperience} workExperienceList={profileData.workExperience} />
-                <div className="profile-save-btn" type="submit">
+                <div className="profile-save-btn" onClick={saveProfile}>
                     <h1 style={{fontSize: "18px", color: "#fff"}}>Save Profile</h1>
                 </div>
+               
                 <br/>
                 <br/>
                 <br/>
@@ -326,130 +338,3 @@ function ApplicantProfile(){
 }
 
 export default ApplicantProfile;
-
-
-
-// import React, { Component } from "react";
-// import CustomForm from "./profileForm.js";
-// import {useLocalStorage} from "./localStorage.js";
-// import "../styles/ApplicantProfile.css";
-// import WorkHistory from "./WorkHistory";
-// import axios from "axios";
-
-// class ApplicantProfile extends Component {
-//     constructor(props){
-//         super(props);
-//         this.state = {
-//             firstName: "",
-//             lastName: "",
-//             email: "",
-//             linkedinURL: "",
-//             universityName: "",
-//             major: "",
-//             degree: "",
-//             resumeURL: "",
-//             workExperience: []
-//         };
-//     }
-//     getUserData = async() => {
-//         const userId = JSON.parse(localStorage.getItem("userId"));
-//         const users = await axios.post("/getUserByID", {"userId":userId});
-//         await this.setState({ workExperience: users.data.workExperience });
-//     }
-
-//     componentDidMount = () => {
-//         document.body.style = 'background: #fffbf3;';
-//         const userId = localStorage.getItem("userId");
-//         this.getUserData();
-//     }
-
-//     handleSubmit = () => {
-
-//     }
-
-//     handleChange = (event) => {
-//         this.setState({ [event.target.name]: event.target.value });
-//     }
-
-//     handleFileUpload = () => {
-
-//     }
-
-//     saveProfile = () => {
-
-//     }
-
-
-
-//     render(){
-//         console.log(this.state);
-
-//         return(
-//         <div style={{display: "flex", flex: 1, justifyContent: "center"}}>
-//             <div className="container">
-//                 <form onSubmit={this.handleSubmit}>
-//                 <h1>Profile Info</h1>
-//                 <hr/>
-//                 <div style={{display:"flex", width:"100%"}}>
-//                     <div className="form-group">
-//                         <label htmlFor="first-name">First Name</label>
-//                         <input style={{width: "95%"}} type="text" name="firstName" id="first-name" onChange={this.handleChange} value={this.state.firstName} />
-//                     </div>
-//                     <div className="form-group">
-//                         <label htmlFor="first-name">Last Name</label>
-//                         <input type="text" name="lastName" id="last-name" onChange={this.handleChange} value={this.state.lastName}/>
-//                     </div>
-                    
-//                 </div>
-//                 <br/>
-//                 <div className="form-group">
-//                     <label htmlFor="email">Email</label>
-//                     <input type="text" name="email" id="email" onChange={this.handleChange} value={this.state.email} />
-//                 </div>
-//                 <br/>
-//                 <div className="form-group">
-//                     <label htmlFor="linkedinURL">Linkedin Profile URL</label>
-//                     <input type="text" name="linkedinURL" id="linkedinURL" onChange={this.handleChange} value={this.state.linkedinURL} />
-//                 </div>
-//                 <div style={{marginTop: 20}}>
-//                     <input type="file" name="file" id="file" className="inputfile" onChange={this.handleFileUpload} />
-//                     <label htmlFor="file">Upload Resume</label>
-//                 </div>
-//                 <br/>
-//                 <div className="form-group">
-//                     <label htmlFor="universityName">University Name</label>
-//                     <input type="text" name="universityName" id="universityName" onChange={this.handleChange} value={this.state.universityName}/>
-//                 </div>
-//                 <br/>
-//                 <div style={{display:"flex", width:"100%"}}>
-//                     <div className="form-group">
-//                         <label htmlFor="college-major">Major</label>
-//                         <input style={{width: "95%"}} type="text" name="major" id="college-major" onChange={this.handleChange} value={this.state.major}/>
-//                     </div>
-//                     <div className="form-group">
-//                         <label htmlFor="college-degree">Degree</label>
-//                         <input type="text" name="degree" id="college-degree" onChange={this.handleChange} value={this.state.degree}/>
-//                     </div>
-                    
-//                 </div>
-//                 <br/>
-//                 <WorkHistory workExperienceList={this.state.workExperience}/>
-//                 {/* callback={getWorkExperience} */}
-//                 <div className="profile-save-btn" onClick={this.saveProfile}>
-//                     <h1 style={{fontSize: "18px", color: "#fff"}}>Save Profile</h1>
-//                 </div>
-//                 <br/>
-//                 <br/>
-//                 <br/>
-//                 <br/>
-
-                
-//                 </form>
-//             </div>
-//         </div>
-        
-//     );
-//     }
-// }
-
-// export default ApplicantProfile;

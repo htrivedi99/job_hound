@@ -18,7 +18,7 @@ function Register() {
             lastName: inputs.lastName,
             email: inputs.email,
             password: inputs.password,
-            userType: "applicant"
+            userType: "applicant",
         }
         
         axios.post("/newJobApplicant", newUser)

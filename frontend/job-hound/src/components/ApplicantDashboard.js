@@ -71,6 +71,8 @@ function JobList(){
    const [jobPosts, setJobPosts] = useState([]);
    const [currentJobPost, setCurrentJobPost] = useState({});
    const [userId, setUserId] = useLocalStorage("userId");
+   const [firstName, setFirstName] = useLocalStorage("firstName");
+   const [lastName, setLastName] = useLocalStorage("lastName");
 
    useEffect(() => {
       const fetchJobPosts = async() => {
@@ -91,8 +93,11 @@ function JobList(){
      const data = {
         jobId: jobId,
         userId: userId,
+        firstName: firstName,
+        lastName: lastName,
         applicationStatus: "In review"
      };
+     console.log(userId);
    const result = await axios.post("/applyToJob", data);
    console.log(result.data);
   }
@@ -100,8 +105,8 @@ function JobList(){
   let postsDisplayed = jobPosts.map((item, index) => (
    <li onClick={e => showJobDescription(e,item)} style={{ listStyleType: "none", border: "1px solid #d3d3d3", cursor: "pointer"}}>
    <div style={{width: "100%", backgroundColor: "#fffbf3", height: "15vh", display: "flex"}}>
-      <div style={{width: "15%", backgroundColor: "black", height: "10vh", alignSelf:"center", margin: "0px 15px"}}>
-         Logo
+      <div style={{width: "15%", backgroundColor: "#fff", height: "10vh", alignSelf:"center", margin: "0px 15px", display:"flex", justifyContent:"center", alignItems:"center"}}>
+         <img src={item.logo}/>
       </div>
       <div>
       <h1 style={{fontSize: 16, marginTop: 15, marginBottom: 0}}>{item.position}</h1>
@@ -131,12 +136,13 @@ function JobList(){
                {postsDisplayed}
            
          </div>
-         <div style={{width: "65%", padding: "0px 20px", overflow: "auto"}}>
+         <div style={{width: "65%", padding: "0px 20px", overflow: "auto", height: "85vh"}}>
             <div className="jobPostHeader" style={{display: "flex"}}>
                <div style={{width: "50%"}}>
                   <h1 style={{marginBottom: 0}}>{currentJobPost.position}</h1>
                   <div style={{display: "flex", alignItems: "center"}}>
-                     <div style={{width: "15%", backgroundColor: "black", height: "7vh", marginRight: "10px"}}>
+                     <div style={{width: "15%", height: "7vh", marginRight: "10px"}}>
+                        <img src={currentJobPost.logo}/>
                      </div>
                      <h1 style={{margin: 0, fontSize: 20}}>{currentJobPost.company_name}</h1>
                   </div>

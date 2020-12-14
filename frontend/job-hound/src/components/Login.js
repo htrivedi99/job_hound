@@ -22,6 +22,7 @@ function Login() {
         }
 
         const response = await axios.post("/applicantLogin", user)
+        
         setUserId(response.data.userId);
         setFirstName(response.data.firstName);
         setLastName(response.data.lastName);
@@ -32,19 +33,6 @@ function Login() {
           setJobPosts(response.data.jobPosts);
           history.push("/recruiterDashboard");
         }
-
-
-        // axios.post("/applicantLogin", user)
-        // .then(res => {
-        //   console.log(res);
-        //     setUserId(res.data.userId);
-        //     setFirstName(res.data.firstName);
-        //     setLastName(res.data.lastName);
-        // })
-        // .then(res => {
-        //     //console.log(res);
-        //     // history.push("/applicantDashboard");
-        // })
 
         console.log(userId, firstName, lastName);
 

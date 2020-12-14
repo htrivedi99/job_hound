@@ -13,6 +13,7 @@ function JobPost(){
     const [applicantWorkHistory, setApplicantWorkHistory] = useState("");
 
     const showApplicantProfile = async(applicant) => {
+        console.log(applicant);
         const data = {
             userId: applicant.applicantId
         }
@@ -28,9 +29,9 @@ function JobPost(){
 
     const Applicants = () => {
         let applicants = location.state.applicants.map(applicant => (
-            <li onClick={e => showApplicantProfile(applicant)} style={{ listStyleType: "none", border: "1px solid #d3d3d3", cursor: "pointer"}}>
-                <div style={{width: "100%", backgroundColor: "#fffbf3", height: "15vh", display: "flex"}}>
-                    <h1 style={{fontSize: 16, marginTop: 15, marginBottom: 0}}>{applicant.applicantId}</h1>
+            <li onClick={e => showApplicantProfile(applicant)} style={{ listStyleType: "none", border: "1px solid #fff", cursor: "pointer"}}>
+                <div style={{width: "100%", backgroundColor: "#36356b", height: "10vh", display: "flex", justifyContent:"center", alignItems:"center"}}>
+                    <h1 style={{fontSize: 16, marginTop: 15, marginBottom: 0, color: "#fff"}}>{applicant.firstName} {applicant.lastName}</h1>
                 </div>
 
             </li>
@@ -50,7 +51,7 @@ function JobPost(){
                     <h1 style={{fontSize: 16, fontFamily: "Helvetica Neue", fontWeight: 500, margin: 0, marginLeft: "20px", marginBottom: "5px"}}>To: {item.toMonth} {item.toYear}</h1>
                 </div>
                 <h1 style={{fontSize: 16, fontFamily: "Helvetica Neue", fontWeight: 500, margin: 0, marginBottom: "10px"}}>{item.location}</h1>
-                <p style={{fontSize: 16, fontFamily: "Helvetica Neue", fontWeight: 500, margin: 0, marginBottom: "15px"}}>{item.jobExperience}</p>
+                <p style={{fontSize: 16, fontFamily: "Helvetica Neue", fontWeight: 500, margin: 0, marginBottom: "15px", whiteSpace: "pre-line"}}>{item.jobExperience}</p>
 
                 <hr/>
             </div>
@@ -60,11 +61,11 @@ function JobPost(){
 
     return(
         <div style={{display: "flex"}}>
-         <div style={{backgroundColor:"#fffbf3", width: "35%", height: "100vh", overflow: "auto"}}>
+         <div style={{backgroundColor:"#36356b", width: "25%", height: "100vh", overflow: "auto"}}>
             <Applicants />
          </div>
         { applicantProfile ? 
-            <div style={{width: "65%", padding: "0px 20px", height: "100vh", overflow: "auto"}}>
+            <div style={{width: "75%", padding: "0px 20px", height: "100vh", overflow: "auto"}}>
             <div style={{display:"flex"}}>
                <h1 style={{fontSize: 24, fontFamily: "Helvetica Neue", fontWeight: 600}}>{applicantProfile.firstName}</h1>
                <h1 style={{paddingLeft: "10px", fontSize: 24, fontFamily: "Helvetica Neue", fontWeight: 600}}>{applicantProfile.lastName}</h1>
@@ -81,6 +82,10 @@ function JobPost(){
                <h1 style={{fontSize: 25, fontFamily: "Helvetica Neue", fontWeight: 500}}>Work Experience</h1>
                <ShowWorkExperience/>
            </div>
+           <div>
+           <a style={{fontSize: 16, fontFamily: "Helvetica Neue", fontWeight: 500}} href={applicantProfile.resumeUrl} target='_blank'>View Resume</a>
+
+            </div>
            
         </div>
         : null

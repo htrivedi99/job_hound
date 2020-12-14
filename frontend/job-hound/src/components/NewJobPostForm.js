@@ -9,6 +9,7 @@ import "../styles/NewJobPostForm.css";
 
 function NewJobPostForm(){
     const [userId, setUserId] = useLocalStorage("userId");
+    const [userProfile, setUserProfile] = useLocalStorage("userProfile");
 
     const createNewPost = async(e) => {
         e.preventDefault();
@@ -16,12 +17,15 @@ function NewJobPostForm(){
         const jobPostId = uuidv4();
         const data = {
             jobPostId: jobPostId,
+            orgName: userProfile.orgName,
             jobTitle: inputs.jobTitle,
             jobLocation: inputs.jobLocation,
             jobDescription: inputs.jobDescription,
             jobType: jobType,
             jobLevel: jobLevel,
-            educationLevel: educationLevel
+            educationLevel: educationLevel,
+            industry: userProfile.industry,
+            logoUrl: userProfile.logoUrl
         }
 
         const post = {
