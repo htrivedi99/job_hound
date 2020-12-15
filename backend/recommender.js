@@ -2,7 +2,7 @@ const { GameLift } = require("aws-sdk");
 const { MongoClient } = require("mongodb");
 require("dotenv").config();
 
-const getRecommendations = (user, cb) => {
+const getRecommendations = (, cb) => {
   MongoClient.connect(process.env.DB_STRING, { useUnifiedTopology: true })
     .then((client) => {
       const db = client.db("job-db");
@@ -39,3 +39,7 @@ getRecommendations("vivek@gmail.com", function (err, res) {
     }
   }
 });
+
+module.exports = {
+  getRecommendations
+}
