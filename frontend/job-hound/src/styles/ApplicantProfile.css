@@ -1,0 +1,99 @@
+.profile-list{
+    list-style: none;
+    font-size: 20px;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+
+.profile-list-element{
+    padding: 20px 20px;
+    border: 1px solid #ccc;
+}
+.profile-list-container{
+    width: 20%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 20px 20px;
+}
+
+.container{
+    width: 50%;
+    margin-left: 20px;
+}
+
+.form-group{
+    margin-right: 20px;
+    flex: 1;
+}
+
+.form-group label {
+    display: block;
+    color: #666;
+    font-weight: bold;
+  }
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-top: 10px;
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif; 
+}
+.inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+.inputfile + label {
+    font-size: 1.25em;
+    font-weight: 700;
+    color: white;
+    background-color: #A93F3F;
+    padding: 20px 20px;
+    border-radius: 10px;
+    display: inline-block;
+}
+
+.inputfile:focus + label,
+.inputfile + label:hover {
+    background-color: #BD5858;
+    cursor: pointer;
+}
+.month-select{
+    margin-top: 10px;
+    width: 20%;
+    height: 39px;
+    padding: 6px 12px;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    margin-right: 20px;
+    margin-bottom: 5px;
+}
+
+.addWorkExperience-btn {
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: darkorange;
+    font-weight: bolder;
+    cursor: pointer;
+}
+.profile-save-btn {
+    background-color: green;
+    width: 20%;
+    padding: 1px 1px;
+    text-align: center;
+    justify-content: center;
+    border-radius: 5px;
+    cursor: pointer;
+}
