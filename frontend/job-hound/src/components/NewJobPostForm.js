@@ -10,6 +10,7 @@ import "../styles/NewJobPostForm.css";
 function NewJobPostForm(){
     const [userId, setUserId] = useLocalStorage("userId");
     const [userProfile, setUserProfile] = useLocalStorage("userProfile");
+    const history = useHistory();
 
     const createNewPost = async(e) => {
         e.preventDefault();
@@ -36,6 +37,7 @@ function NewJobPostForm(){
         const query1 = await axios.post("/addNewJobPostMongo", data);
         const query2 = await axios.post("/addJob", data);
         const query3 = await axios.post("/addJobPostRecruiter", post);
+        history.push("/recruiterDashboard");
        
     }
 

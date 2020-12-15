@@ -6,15 +6,25 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {useLocalStorage} from "./localStorage.js";
 import axios from "axios";
 
-function Navbar(){
+function Navbar({callback}){
     const history = useHistory();
+    const [search, setSearch] = useState("");
+
+    const handleChange = (event) => {
+      setSearch(event.target.value);
+    }
+
+    const launchSearch = () => {
+       callback("position", search);
+    }
+
     return(
     <div className="navbar-top">
         <div className="search-box">
-            <div className="search-btn">
+            <div className="search-btn" onClick={launchSearch}>
                 <FontAwesomeIcon icon={faSearch} style={{color: "#00416d"}}/>
             </div>
-            <input className="search-txt" type="text" name="" placeholder="Search jobs"/>
+            <input className="search-txt" type="text" name="" placeholder="Search jobs" value={search} onChange={e => {handleChange(e)}}/>
         </div>
         <ul className="new-navlink">
             {/* <li><a onClick={this.logoutUser}>Logout</a></li> */}
@@ -26,18 +36,100 @@ function Navbar(){
     );
 }
 
-function Filters(){
+function Filters({ callback }){
+
+
     return(
         <div className="filters">
                <ul className="categories">
-                  <span style={{position: "relative"}}>
-                     <span>Job Type</span>
+
+                  <div className="dropdown">
+                     <button className="dropbtn">
+                        <span>Job Type</span>
                         <span className="chevron">
-                           <FontAwesomeIcon icon={faChevronDown}/>
+                              <FontAwesomeIcon icon={faChevronDown}/>
                         </span>
-                  </span>      
+                        </button>
+                        <div class="dropdown-content">
+                           <a onClick={e => callback("job_type", "full-time")}>Full Time</a>
+                           <a onClick={e => callback("job_type", "part-time")}>Part Time</a>
+                           <a onClick={e => callback("job_type", "contractor")}>Contractor</a>
+                        </div>
+                  </div>
+                     
+                     <div className="dropdown">
+                        <button className="dropbtn">
+                           <span>Industry</span>
+                           <span className="chevron">
+                              <FontAwesomeIcon icon={faChevronDown}/>
+                           </span>
+                        </button>
+                        <div class="dropdown-content">
+                           <a onClick={e => callback("industry", "technology")}>Technology</a>
+                           <a onClick={e => callback("industry", "retail")}>Retail</a>
+                           <a onClick={e => callback("industry", "footwear and accessories")}>Footwear and Athletics</a>
+                           <a onClick={e => callback("industry", "aerospace")}>Aerospace</a>
+                           <a onClick={e => callback("industry", "finance")}>Finance</a>
+                           <a onClick={e => callback("industry", "automotive")}>Automotive</a>
+                           <a onClick={e => callback("industry", "energy")}>Energy</a>
+                           <a onClick={e => callback("industry", "telecommunications")}>Telecommunications</a>
+                           <a onClick={e => callback("industry", "entertainment")}>Entertainment</a>
+                        </div>
+                     </div>
+
+                     <div className="dropdown">
+                        <button className="dropbtn">
+                           <span>Location</span>
+                           <span className="chevron">
+                              <FontAwesomeIcon icon={faChevronDown}/>
+                           </span>
+                        </button>
+                        <div class="dropdown-content">
+                           <a onClick={e => callback("location", "Seattle, WA")}>Seattle, WA</a>
+                           <a onClick={e => callback("location", "San Francisco, CA")}>San Francisco, CA</a>
+                           <a onClick={e => callback("location", "Mountain View, CA")}>Mountain View, CA</a>
+                           <a onClick={e => callback("location", "Sunnyvale, CA")}>Sunnyvale, CA</a>
+                           <a onClick={e => callback("location", "Menlo Park, CA")}>Menlo Park, CA</a>
+                           <a onClick={e => callback("location", "New York, NY")}>New York, NY</a>
+                           <a onClick={e => callback("location", "Palo Alto, CA")}>Palo Alto, CA</a>
+                           <a onClick={e => callback("location", "Cupertino, CA")}>Cupertino, CA</a>
+                           <a onClick={e => callback("location", "Austin,TX")}>Austin,TX</a>
+                           <a onClick={e => callback("location", "Dearborn, MI")}>Dearborn, MI</a>
+                           <a onClick={e => callback("location", "Burbank, CA")}>Burbank, CA</a>
+                           <a onClick={e => callback("location", "Chicago, IL")}>Chicago, IL</a>
+                           <a onClick={e => callback("location", "Redmond, WA")}>Redmond, WA</a>
+                        </div>
+                     </div>
+
+                     <div className="dropdown">
+                        <button className="dropbtn">
+                           <span>Education Level</span>
+                           <span className="chevron">
+                              <FontAwesomeIcon icon={faChevronDown}/>
+                           </span>
+                        </button>
+                        <div class="dropdown-content">
+                           <a onClick={e => callback("education_level", "bs")}>B.S</a>
+                           <a onClick={e => callback("education_level", "ms")}>M.S</a>
+                           <a onClick={e => callback("education_level", "phd")}>P.h.D</a>
+                        </div>
+                     </div>
+
+                     <div className="dropdown">
+                        <button className="dropbtn">
+                           <span>Experience Level</span>
+                           <span className="chevron">
+                              <FontAwesomeIcon icon={faChevronDown}/>
+                           </span>
+                        </button>
+                        <div class="dropdown-content">
+                           <a onClick={e => callback("experience_level", "entry-level")}>Entry Level</a>
+                           <a onClick={e => callback("experience_level", "mid-level")}>Mid Level</a>
+                           <a onClick={e => callback("experience_level", "senior-level")}>Senior Level</a>
+                        </div>
+                     </div>
                   
-                  <span style={{position: "relative"}}>
+                  {/* <span style={{position: "relative"}}>
                      <span>Industry</span>
                         <span className="chevron">
                            <FontAwesomeIcon icon={faChevronDown}/>
@@ -60,7 +152,7 @@ function Filters(){
                         <span className="chevron">
                            <FontAwesomeIcon icon={faChevronDown}/>
                         </span>
-                  </span>  
+                  </span>   */}
                </ul>
             </div>
     );
@@ -76,8 +168,12 @@ function JobList(){
 
    useEffect(() => {
       const fetchJobPosts = async() => {
+         document.body.style = 'background: #fff;'; 
           const result = await axios.get("/getAllJobs");
           console.log(result.data);
+          const userInfo = await axios.post("/getUserByID", { userId: userId});
+          setFirstName(userInfo.data.firstName);
+          setLastName(userInfo.data.lastName);
           setJobPosts(result.data.data);
       };
       fetchJobPosts();
@@ -98,8 +194,25 @@ function JobList(){
         applicationStatus: "In review"
      };
      console.log(userId);
+    
    const result = await axios.post("/applyToJob", data);
    console.log(result.data);
+   alert(result.data);
+   
+  }
+
+  const filterJobs = async(field, value) => {
+     const data = {
+        field: field,
+        value: value
+     }
+     const result = await axios.post("/filterJobPosts", data);
+      console.log(field, value);
+      //console.log(result);
+      if(result.status === 200){
+         const queryJobs = result.data[1].data;
+         setJobPosts(queryJobs);
+      }
   }
 
   let postsDisplayed = jobPosts.map((item, index) => (
@@ -130,7 +243,13 @@ function JobList(){
 
 
    return(
+      <div>
+         <Navbar callback={filterJobs}/>
+         <div>
+            <Filters callback={filterJobs}/>
+         </div>
       <div style={{display: "flex"}}>
+         
          <div style={{backgroundColor:"#fffbf3", width: "35%", height: "80vh", overflow: "auto"}}>
             
                {postsDisplayed}
@@ -169,16 +288,17 @@ function JobList(){
             </div>
          </div>
       </div>
+      </div>
    );
 }
 
 function ApplicantDashboard(){
     return(
         <div>
-            <Navbar/>
-            <div>
+            {/* <Navbar/> */}
+            {/* <div>
                 <Filters/>
-            </div>
+            </div> */}
             <JobList/>
         </div>
        

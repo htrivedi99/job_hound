@@ -98,6 +98,12 @@ function WorkHistory({ callback, workExperienceList}) {
         console.log(dropdownInputs);
     }
 
+    const removeWorkExperience = (event, item) => {
+        event.preventDefault();
+        let testArr = experienceList.filter(element => element !== item);
+        setExperienceList(testArr);
+    }
+
     let testDisplay = experienceList.map((item, index) => (
         <React.Fragment>
         <div className="form-group">
@@ -144,7 +150,7 @@ function WorkHistory({ callback, workExperienceList}) {
                 />
                 <div style={{display: "flex", justifyContent: "space-between"}}>
                     <button onClick={saveWorkExperience} style={{backgroundColor: "#D2691E", padding: "10px 20px", fontSize: 20, borderRadius: "10px", color: "#fff", cursor: "pointer"}}>Save</button>
-                    <button style={{backgroundColor: "#B22222", padding: "10px 20px", fontSize: 20, borderRadius: "10px", color: "#fff", cursor: "pointer"}}>Trash</button>
+                    <button onClick={e => {removeWorkExperience(e, item)}} style={{backgroundColor: "#B22222", padding: "10px 20px", fontSize: 20, borderRadius: "10px", color: "#fff", cursor: "pointer"}}>Trash</button>
                 </div>
 
 
@@ -209,11 +215,12 @@ function ApplicantProfile(){
         const formData = new FormData();
         formData.append("file", resume);
         let resumeUrl = "";
-        console.log(profileData.profile);
-        console.log(workExperience);
+        console.log(profileData);
+        console.log(resume);
+
         
 
-        if(resume !== ""){
+        if(resume){
             await axios.post("/uploadResumeToS3", formData)
             .then(res => {
                 console.log(res);
@@ -221,7 +228,7 @@ function ApplicantProfile(){
             })
         }
         let profileInfo = {};
-        if(resume !== ""){
+        if(resume){
             profileInfo = {
                 userInfo: profileData.profile,
                 workExperience: workExperience,
@@ -232,7 +239,8 @@ function ApplicantProfile(){
             profileInfo = {
                 userInfo: profileData.profile,
                 workExperience: workExperience,
-                userId: userId
+                userId: userId,
+                resumeUrl: profileData.resumeUrl
             }
 
         }

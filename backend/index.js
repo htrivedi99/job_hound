@@ -414,12 +414,14 @@ app.post("/updateJob", (req, res) => {
 });
 
 app.post("/filterJobPosts", (req, res) => {
+  console.log(req.body);
   postgresdb.filterJobPosts(
     req.body,
     (cb = (err, data) => {
       if (err) {
         res.status(400).json({ error: err });
       } else {
+        console.log(data);
         res.status(200).json([{ message: "Success" }, { data: data }]);
       }
     })
